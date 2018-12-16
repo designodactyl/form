@@ -1,0 +1,109 @@
+@mixin breakpoint($class) {
+  @if $class == xs {
+    @media (max-width: 600px) { @content; }
+  }
+
+  @else if $class == sm {
+    @media (max-width: 768px) { @content; }
+  }
+
+  @else if $class == md {
+    @media (max-width: 900px) { @content; }
+  }
+
+  @else if $class == lg {
+    @media (max-width: 1024px) { @content; }
+  }
+
+	@else if $class == xl {
+		@media (max-width: 1280px) { @content; }
+	}
+
+	@else if $class == xxl {
+		@media (max-width: 1440px) { @content; }
+	}
+
+  @else {
+    @warn "Breakpoint mixin supports: xs, sm, md, lg, xl, xxl";
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scaleY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleY(0px);
+  }
+}
+
+.fadeIn{
+  animation: fadeIn 300ms ease-in;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@keyframes rotate {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(180deg); }
+}
+
+.rotate {
+  animation: rotate 2s linear infinite;
+}
+
+.blink {
+  -webkit-animation: blink 1s ease-in-out infinite;
+  -moz-animation: blink 1s ease-in-out infinite;
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes fadeInLeft {
+  from {
+    // opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    // opacity: 1;
+    transform: none;
+  }
+}
+
+.fadeInLeft{
+  animation: fadeInLeft .65s linear;
+}
+
+@keyframes fadeOutLeft {
+  from {
+    // opacity: 0;
+    transform: none;
+  }
+
+  to {
+    // opacity: 1;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.fadeOutLeft{
+  animation: fadeOutLeft .65s linear;
+}
+
+@keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-out { animation: fade-out .5s ease forwards !important; }
+.fade-in { animation: fade-in .5s ease forwards; }

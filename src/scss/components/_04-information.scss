@@ -1,0 +1,118 @@
+// information styles
+$sideways-width: 3.5rem;
+
+.right-info,
+.project-wrapper {
+  position: fixed;
+  width: calc(50% + 0.1rem);
+  height: 100%;
+  padding-left: $sideways-width;
+  right: calc(-50% + 3.25rem);
+  top: 0;
+  background: $white;
+  transition: $smooth;
+  z-index: 4000;
+  background: $rich-black;
+  @include breakpoint(lg) {
+    width: calc(75% - 0.1rem);
+    right: calc(-75% + 3.25rem);
+  }
+  @include breakpoint(md) {
+    width: calc(90% - 0.1rem);
+    right: calc(-90% + 3.25rem);
+  }
+  @include breakpoint(xs) {
+    width: calc(100%);
+    right: calc(-100%);
+    padding-left: 0;
+  }
+}
+
+.right-info,
+.project-loadspot{
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: visible;
+  background: $white;
+  will-change: opacity;
+}
+
+.project-loadspot,
+.project-wrapper{
+  z-index: 6000;
+}
+
+.project-wrapper{
+  right: calc(-50%);
+  padding-left: 0!important;
+  width: calc(50% - 0.1rem)!important;
+  @include breakpoint(lg) {
+    right: calc(-75%);
+    width: calc(75% - 0.1rem)!important;
+    border-left: 0.1rem solid $grey;
+  }
+  @include breakpoint(md) {
+    right: calc(-90%);
+    width: calc(90% - 0.1rem)!important;
+  }
+  @include breakpoint(xs) {
+    width: calc(100%)!important;
+    right: calc(-100%);
+  }
+}
+
+.sideways-bar-info{
+  visibility: visible;
+  @include breakpoint(xs) {
+    visibility: hidden;
+  }
+}
+
+.sideways-bar-info,
+.sideways-bar-project{
+  width: $sideways-width;
+  height: 100vh;
+  top: 0;
+  margin: auto;
+  margin-left: -$sideways-width;
+  position: fixed;
+  background: $white;
+  cursor: pointer;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.sideways,
+.sideways-title{
+  position: absolute;
+  top: 50%;
+  width: 25rem;
+  height: 1rem;
+  transform: translate(-8.6rem, -50%) rotate(90deg);
+  text-align: center;
+  transition: $ease;
+}
+
+.sideways:after{
+  content: ' \2193';
+}
+
+.sideways-title:after{
+  content: ' \2191';
+}
+
+.open{
+  right: 0;
+}
+
+.nudge{
+  margin-right: 0.5rem;
+}
+
+.stay{
+  transform: translate(-10.6rem, -50%) rotate(90deg);
+}
+
+.move{
+  transform: translate(-13rem, -50%) rotate(90deg);
+}

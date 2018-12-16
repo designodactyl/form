@@ -1,0 +1,146 @@
+<div class="project-loadspot">
+  <div class="project-images">
+    {# Project hero image #}
+    <div class="hero-image mb1">
+      {% for image in entry.projectHeroImage %}
+        {% if image.extension == 'gif' %}
+          <img src="{{ image.getUrl() }}" >
+          {% else %}
+          <img src="{{ image.getUrl('mediumImage') }}" >
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {# Project images #}
+    {% for row in entry.projectImages %}
+      {# If digital #}
+      {% if row.digital %}
+        {% for asset in row.picture %}
+          <div class="digital mb1">
+            {# If video (audio, play button) #}
+            {% if asset.extension == 'mp4' and row.video %}
+            {# Video #}
+            <div class="video-container">
+              {# Video  #}
+              <video id="video" width="100%">
+                <source src="{{ asset.getUrl() }}" type="video/mp4">
+              </video>
+              <div class="video-controls" >
+                <button type="button" id="play-pause">
+                  <div class="play"></div>
+                  <div class="pause"></div>
+                </button>
+                {# <span id="full-screen"></span> #}
+              </div>
+            </div>
+            {# If video (muted, autoplay) #}
+            {% elseif asset.extension == 'mp4' %}
+               <video src="{{ asset.getUrl() }}#t=0.1" type="video/mp4" width="100%" preload="auto" autoplay muted loop playsinline></video>
+            {# If GIF #}
+            {% elseif asset.extension == 'gif' %}
+               <img src="{{ asset.getUrl() }}" >
+            {% else %}
+               <img src="{{ asset.getUrl('mediumImage') }}" >
+            {% endif %}
+          </div>
+        {% endfor %}
+        {% else %}
+          {% for asset in row.picture %}
+            <div class="image mb1">
+              {# If video (audio, play button) #}
+              {% if asset.extension == 'mp4' and row.video %}
+              {# Video #}
+              <div class="video-container">
+                {# Video  #}
+                <video id="video" width="100%">
+                  <source src="{{ asset.getUrl() }}#t=0.1" type="video/mp4">
+                </video>
+                <div class="video-controls">
+                  <button type="button" id="play-pause">
+                    <div class="play"></div>
+                    <div class="pause"></div>
+                  </button>
+                  {# <span id="full-screen"></span> #}
+                </div>
+              </div>
+              {# If video (muted, autoplay) #}
+              {% elseif asset.extension == 'mp4' %}
+               <video src="{{ asset.getUrl() }}" type="video/mp4" width="100%" preload="auto" autoplay muted loop playsinline></video>
+              {# If GIF #}
+              {% elseif asset.extension == 'gif' %}
+               <img src="{{ asset.getUrl() }}" >
+              {% else %}
+               <img src="{{ asset.getUrl('mediumImage') }}" >
+              {% endif %}
+            </div>
+          {% endfor %}
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {# Project Description #}
+  <div class="project-info pa4 mb7 pa3-xs">
+    {{ entry.projectDescription }}
+  </div>
+
+  {# Project Details #}
+  <div class="project-details pl4 pr4 pt3 bt mb6 pa3-xs">
+    {% for row in entry.projectDetails %}
+      <div class="">
+        {# Project Collaborators #}
+        {% if row.projectCollaborators is not empty %}
+          <p class="p-nodent">
+            A
+            {% for person in row.projectCollaborators %}
+              {% if person.collaborator is not empty %}
+                <a href="{{ person.website }}">{{ person.collaborator }}</a>{{ loop.index < loop.length-1 ? ', ' : loop.index < loop.length ? ' and' }}
+              {% endif %}
+            {% endfor %}
+            project
+         </p>
+       {% endif %}
+
+       {# Project Designers #}
+       {% if row.designers is not empty %}
+         <p class="p-nodent">
+           Design by
+           {% for person in row.designers %}
+            {% if person.designer is not empty %}
+              <a href="{{ person.website }}">{{ person.designer }}</a>{{ loop.index < loop.length-1 ? ', ' : loop.index < loop.length ? ' and' }}
+              {% endif %}
+          {% endfor %}
+          </p>
+        {% endif %}
+
+        {# Project Developers #}
+        {% if row.developers is not empty %}
+          <p class="p-nodent">
+            Development by
+          {% for person in row.developers %}
+            {% if person.developer is not empty %}
+              <a href="{{ person.website }}">{{ person.developer }}</a>{{ loop.index < loop.length-1 ? ', ' : loop.index < loop.length ? ' and' }}
+            {% endif %}
+          {% endfor %}
+          </p>
+        {% endif %}
+
+        {# Project Strategists #}
+        {% if row.strategists is not empty %}
+          <p class="p-nodent">
+            Strategy by
+            {% for person in row.strategists %}
+              {% if person.strategist is not empty %}
+                <a href="{{ person.website }}">{{ person.strategist }}</a>{{ loop.index < loop.length-1 ? ', ' : loop.index < loop.length ? ' and' }}
+              {% endif %}
+            {% endfor %}
+          </p>
+        {% endif %}
+
+        <p class="p-nodent mt4">
+          <a href="{{ entry.projectUrl }}">{{ entry.projectUrl|replace({'http://': ''}) }}</a>
+        </p>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="close-circle t-center">×</div>
+</div>

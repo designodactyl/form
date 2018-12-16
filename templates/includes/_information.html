@@ -1,0 +1,44 @@
+
+  <div class="right-info ml3">
+    <div class="sideways-bar-info bl br small-caps">
+      <div class="sideways stay">{{ information.title }}</div>
+    </div>
+    {# Information #}
+    <div class="info-intro pa4 pt3 pa3-xs h-50">
+      {{ information.infoIntro }}
+    </div>
+    {# Bio #}
+    <div class="biography">
+      <div class="small-caps bb pb2 pl4 pa3-xs">Biography</div>
+      <div class="pa4 pa3-xs mb7">
+        {{ information.biography }}
+      </div>
+    </div>
+    {# Contact #}
+    <div class="contact p-nodent">
+      <div class="small-caps bb pb2 pl4 pa3-xs">Contact</div>
+      {# Contact intro #}
+      <div class="pa4 pa3-xs">
+        {{ information.contactIntro }}
+      </div>
+      {# Contact details #}
+      {% for row in information.contactDetails.all() %}
+            <ul class="contact-details pa4 pa3-xs mb7 w-50 w-100-xs flex-wrapper flex-wrap">
+              <div class="small-caps pt2 pb2 w-10">EM</div>
+              <a href="mailto:{{ row.email }}" class="w-90 bb pt2 pb2"><li>{{ row.email }}</li></a>
+
+              <div class="small-caps pt2 pb2 w-10">PH</div>
+              <a href="tel:{{ row.phone }}" class="w-90 bb pt2 pb2"><li>{{ row.phone }}</li></a>
+
+              <div class="small-caps pt2 pb2 w-10">In</div>
+              <a href="http://instagram.com/{{ row.insta|replace({'@': ''}) }}" target="_blank" class="w-90 bb pt2 pb2"><li>{{ row.insta }}</li></a>
+
+              <div class="small-caps pt2 pb2 w-10">Tw</div>
+              <a href="http://twitter.com/{{ row.twitter|replace({'@': ''}) }}" target="_blank" class="w-90 bb pt2 pb2"><li>{{ row.twitter }}</li></a>
+            </ul>
+            {# <ul class="contact-address debug">
+              <a href="mailto:{{ row.address }}"><li>AD {{ row.address }}</li></a>
+            </ul> #}
+        {% endfor %}
+    </div>
+  </div>

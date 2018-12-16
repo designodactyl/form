@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57474945-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-57474945-2');
+    </script>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <title>design.by{{ siteName }}</title>
+    <meta name="author" content="Dan Flynn" />
+  	<meta name="description" content="design.byform is the portfolio of Dan Flynn, a freelance designer, developer and creative director, working out of Melbourne, Australia." />
+    <meta name="google-site-verification" content="9r2fG2xU3nyxev5pKJerpHOqCrl424cwLoPwS3RAvSQ" />
+    <meta name="theme-color" content="#fff"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="referrer" content="origin-when-cross-origin" />
+    <!-- Twitter: see https://dev.twitter.com/docs/cards/types/summary-card for details -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@function_Form" />
+    <meta name="twitter:title" content="design.by{{ siteName }}" />
+    <meta name="twitter:description" content="design.byform is the portfolio of Dan Flynn, a freelance designer, developer and creative director, working out of Melbourne, Australia." />
+    <meta name="twitter:url" content="http://design.byform.co/assets/images/socialcard.jpg" />
+    <!-- Facebook (and some others) use the Open Graph protocol: see http://ogp.me/ for details -->
+    <meta property="og:title" content="design.by{{ siteName }}" />
+    <meta property="og:description" content="design.byform is the portfolio of Dan Flynn, a freelance designer, developer and creative director, working out of Melbourne, Australia." />
+    <meta property="og:url" content="http://design.byForm.co" />
+    <meta property="og:image" content="http://design.byform.co/assets/images/socialcard.jpg" />
+
+    <link rel="shortcut icon" href="./assets/images/favicon.ico" />
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+  {% set homepage = craft.entries.section('homepage').one() %}
+  {% set information = craft.entries.section('information').one() %}
+  <main class="">
+    {% block main %}
+    {% endblock %}
+    {% include "includes/_information" %}
+    {% include "includes/_project_holder" %}
+  </main>
+</body>
+<script type="text/javascript"  src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
+<script type="text/javascript"  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" ></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript" src="./assets/js/bundle.js"></script>
+
+<!-- <script id="__bs_script__">//<![CDATA[
+  document.write("<script async src='http://HOST:8888/browser-sync/browser-sync-client.js?v=2.24.4'><\/script>".replace("HOST", location.hostname));
+//]]></script> -->
+</html>

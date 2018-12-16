@@ -1,0 +1,138 @@
+/* Headings
+========================================================================== */
+h1, h2, h3, h4, h5, h6, p, .h1, .h2, .h3, .h4, .h5, .h6, .p{
+  padding: 0;
+  margin: 0;
+  text-transform: none;
+  vertical-align: text-top;
+  font-feature-settings: "kern" 1, 'ss01' 1, 'ss02' 1, 'ss03' 1, 'ss04' 1;
+  letter-spacing: -0.02rem;
+  line-height: 1.2;
+}
+
+h1, .h1, h2, .h2{
+  font-size: 2.7rem;
+  text-indent: 5rem;
+  @include breakpoint(lg) {
+    font-size: 2.4rem;
+    text-indent: 4.5rem;
+  }
+  @include breakpoint(xs) {
+    font-size: 2.2rem;
+    text-indent: 4rem;
+  }
+}
+
+h3, .h3{
+  font-size: 2.7rem;
+}
+
+p, .p {
+  font-size: 2rem;
+  text-indent: 5rem;
+  @include breakpoint(lg) {
+    font-size: 1.8rem;
+    text-indent: 4.5rem;
+  }
+  @include breakpoint(xs) {
+    font-size: 1.6rem;
+    text-indent: 4rem;
+  }
+}
+
+.p-nodent {
+  font-size: 2rem;
+  text-indent: 0rem;
+  @include breakpoint(lg) {
+    font-size: 1.8rem;
+  }
+  @include breakpoint(xs) {
+    font-size: 1.6rem;
+  }
+}
+
+.small-caps {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.075rem;
+  @include breakpoint(lg) {
+    font-size: 0.9rem;
+  }
+  @include breakpoint(xs) {
+    font-size: 0.85rem;
+  }
+}
+
+p a:hover, .p a:hover {
+  border-bottom: 0.1rem solid $black;
+}
+
+
+
+/* Links
+========================================================================== */
+a,
+button{
+  cursor: pointer;
+  transition: $ease;
+}
+
+a:hover,
+button:hover{
+}
+
+.inline{
+  border-bottom: $border-black;
+}
+
+/* Lists
+========================================================================== */
+ul, li, a{
+  vertical-align: top;
+}
+
+/* Styling
+========================================================================== */
+.i {
+  font-style: italic;
+}
+
+.b {
+  font-weight: bold;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+.ttc {
+  text-transform: capitalize;
+}
+
+.ttu {
+  text-transform: uppercase;
+}
+
+.t-left{
+  text-align: left;
+}
+
+.t-right{
+  text-align: right;
+}
+
+.t-center{
+  text-align: center;
+}
+
+.t-white{
+  color: $white;
+}
+
+.t-grey{
+  color: $grey;
+}

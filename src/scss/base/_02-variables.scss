@@ -1,0 +1,17 @@
+$rich-black:        rgb(0, 0, 0);
+$black:             rgb(30, 30, 30);
+$white:             rgb(250, 250, 250);
+$grey:              rgb(220, 220, 220);
+$dark-grey:         rgb(180, 180, 180);
+$highlight:         rgba(255, 210, 0, 1);
+
+$sans: -apple-system, system-ui, BlinkMacSystemFont, Helvetica, Arial, sans-serif, "Apple Color Emoji";
+$serif: 'Times New Roman', serif;
+
+$ease: all 0.3s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+$smooth: all 0.7s cubic-bezier(.23, 1, .32, 1) 0ms;
+$slow: all 1.25s cubic-bezier(.23, 1, .32, 1) 0ms;
+
+$border-black: 1px solid $black;
+$border-white: 1px solid $white;
+$border-grey: 1px solid $grey;

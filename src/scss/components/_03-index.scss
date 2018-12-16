@@ -1,0 +1,252 @@
+// header styles
+header {
+  // overflow: auto;
+  min-height: 50vh;
+}
+
+.header{
+  transition: $smooth;
+}
+
+a li{
+  // border-bottom: $border-white;
+}
+
+header a li:hover,
+header a li.selected,
+header div a:hover{
+
+}
+
+.left{
+  transition: filter 0.7s cubic-bezier(.23, 1, .32, 1) 0ms;
+}
+
+.closer{
+  position: fixed;
+  // background: $grey;
+  width: 100vw;
+  height: 100vh;
+  z-index: 200;
+  visibility: hidden;
+}
+
+.blur{
+  filter: blur(0.3rem);
+}
+
+.stopper{
+  overflow: hidden;
+}
+
+.selected-work-images {
+  position: fixed;
+  right: 0;
+  @include breakpoint(md) {
+    display: none;
+  }
+}
+//Circle
+$circle: 40vw;
+
+.circle{
+  min-width: $circle;
+  min-height: calc(#{$circle} - 0.1rem);
+  border-radius: 100%;
+  background-color: $black;
+  margin: auto;
+  transition: $smooth;
+}
+
+.clear-circle{
+  width: 2rem;
+  height: 2rem;
+  border-radius: 100%;
+  background-color: $black;
+  margin: auto;
+  position: fixed;
+  top: 1rem;
+  right: 4rem;
+  cursor: pointer;
+   &:hover {
+      background-color: $white;
+      border: 0.1rem solid $black;
+    }
+}
+
+.info-circle,
+.close-circle{
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 100%;
+  line-height: 1.5;
+  margin: auto;
+  cursor: pointer;
+  z-index: 5000;
+  visibility: hidden;
+    @include breakpoint(xs) {
+      visibility: visible;
+    }
+}
+
+.info-circle{
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: $white;
+  color: $black;
+  border: 0.1rem solid $grey;
+  &:hover {
+     background-color: $white;
+     border: 0.1rem solid $black;
+   }
+}
+
+.close-circle{
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: $black;
+  color: $white;
+  box-shadow: 0px 6px 6px -4px rgba(0,0,0,0.25);
+  &:hover {
+     background-color: $white;
+     color: $black;
+     border: 0.1rem solid $black;
+   }
+}
+
+
+.hide{
+  opacity: 0;
+  visibility: hidden;
+}
+
+//Project list
+.project-list-item, .info-link{
+  cursor: pointer;
+  position: relative;
+}
+
+.test{
+  align-self:flex-start;
+}
+
+.info-link:after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.1rem;
+  bottom: -0.5rem;
+  left: 0;
+  background-color: $black;
+  transform: scaleX(0);
+  transition: $ease;
+}
+
+.info-link:hover:after {
+  color: red;
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.selected-work-list{
+  min-height: 50vh;
+}
+
+.project-list-item:last-child{
+  border-bottom: 1px solid $grey;
+  padding-bottom: 0.5rem;
+}
+
+// .project-list-item:last-child:hover{
+//   border-bottom: 1px solid $black;
+// }
+
+.project-list-item:hover{
+  border-top: 1px solid $black;
+}
+
+.project-list-item:hover + .project-list-item {
+  border-top: 1px solid $black;
+}
+
+.project-list-item.selected {
+  border-top: 1px solid $black;
+}
+
+.project-list-item.selected + .project-list-item {
+  border-top: 1px solid $black;
+}
+
+.project-list-item.hide-me {
+  color: $dark-grey;
+  cursor: progress;
+}
+
+.project-list-item.hide-me:hover{
+  border-top: 1px solid $dark-grey;
+}
+
+.project-list-item.hide-me:hover + .project-list-item {
+ border-top: 1px solid $dark-grey;
+}
+
+.pop-up-image{
+  // position: fixed;
+  // right: 3rem;
+  // width: calc(50vw - 3rem);
+  // height: 100vh;
+  // top: 0;
+  // z-index: 0;
+}
+
+.pop-up-image img,
+.pop-up-image-temp img{
+  position: absolute;
+  max-width: calc(50% - 1rem);
+  visibility: hidden;
+  opacity: 0.0;
+  margin: auto;
+  box-shadow: 0px 12px 10px -10px rgba(0,0,0,0.75);
+  transition: opacity 0.7s cubic-bezier(.23, 1, .32, 1) 0ms;
+  cursor: move;
+}
+
+img.show-image{
+  visibility: visible;
+  opacity: 1;
+}
+
+.pop-up-image img.hide-me {
+  filter: blur(4px);
+}
+
+.tooltip span, .pop-up-image span{
+    display:none;
+    color: $black;
+}
+.tooltip:hover span, .pop-up-image:hover span {
+    display:block;
+    position:fixed;
+    overflow:hidden;
+}
+
+.pop-up-image span {
+  color: $white;
+}
+
+//Close button
+.close {
+  mask: url("../images/menu.svg") no-repeat 100% 100%;
+  mask-size: cover;
+  background: $black;
+  width: 3.0rem;
+  height: 3.0rem;
+  transform: rotate(45deg);
+  cursor: pointer;
+  transition: $ease;
+    &:hover{
+      transform: rotate(135deg);
+    }
+}

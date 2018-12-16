@@ -1,0 +1,66 @@
+{% extends "includes/_layout" %}
+{% block main %}
+  <div class="flex-wrapper">
+    <div class="closer"></div>
+    <div class="left w-50 w-100-m flex-wrapper flex-col flex-between">
+      {# Header #}
+      <header class="pa4 pt3 pb6 pa3-xs mb6-xs">
+        {{ homepage.siteIntro }}<div class="small-caps pt2"><span class="info-link">Full Profile⤷</span></div>
+      </header>
+      {# Selected work #}
+      <div class="selected-work-list mb5">
+        {# Headers #}
+        <ul class="flex-wrapper flex-wrap pb3w pl4 pl3-xs pr3-xs pb2">
+          <li class="w-15 small-caps">Year</li>
+          <li class="w-35 small-caps">Client</li>
+          <li class="w-35 small-caps">Scope</li>
+          <li class="w-15 small-caps">Studio</li>
+        </ul>
+        {# Project list #}
+        {% for project in craft.entries.section('project').all() %}
+          <ul id="{{ project.title|camel }}"
+          class="{% if project.hiddenProject == '1' %} hide-me tooltip{% endif %} project-list-item-temp flex-wrapper flex-wrap bt pt2 pb2 pl4 pl3-xs pr3-xs p-nodent">
+            {% for row in project.projectDetails.all() %}
+              <li class="w-15 pr3">{{ row.projectYear }}</li>
+              <li class="w-35 pr3">{{ project.title }}</li>
+              <li class="w-35 pr3">{% for select in row.projectType %}{{ select.label }}{{ not loop.last ? ', ' }}{% endfor %}</li>
+              {# Need to do an if statement here, don't forget #}
+              {% if row.projectOwner == 'form' %}
+                <li class="w-15 ">●</li>
+              {% else %}
+                <li class="w-15">{{ row.projectOwner|pascal }}</li>
+              {% endif %}
+              {# {% if project.hiddenProject == '1' %}<span class="small-caps t-center">Password protected</br>Contact for access</span>{% endif %} #}
+            {% endfor %}
+            {# <div class="pop-up-image flex-wrapper flex-col flex-between flex-center">
+              {% for test in project.projectHeroImage %}
+                {% if test.extension == 'gif' %}
+                  <img src="{{ test.getUrl() }}" >
+                  {% else %}
+                  <img src="{{ test.getUrl('smallImage') }}" >
+                {% endif %}
+              {% endfor %}
+            </div> #}
+          </ul>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="info-circle t-center">i</div>
+    <div class="selected-work-images bl h-100-vh w-50 pr4 flex-wrapper flex-col flex-between flex-center">
+        <div class="circle"></div>
+        {# <div class="clear-circle"></div> #}
+        {% for project in craft.entries.section('project').all() %}
+          <div class="pop-up-image-temp tooltip {{ project.title|camel }} flex-wrapper flex-col flex-between flex-center">
+            {% for test in project.projectHeroImage %}
+              {% if test.extension == 'gif' %}
+                <img src="{{ test.getUrl() }}" id="{{ project.title|camel }}" href="{{ project.url }}" class="{% if project.hiddenProject == '1' %} hide-me {% endif %}">
+                {% else %}
+                <img src="{{ test.getUrl('smallImage') }}" id="{{ project.title|camel }}" href="{{ project.url }}" class="{% if project.hiddenProject == '1' %} hide-me {% endif %}">
+              {% endif %}
+            {% endfor %}
+            {% if project.hiddenProject == '1' %}<span class="small-caps t-center">Password protected</br>Contact for access</span>{% endif %}
+          </div>
+        {% endfor %}
+    </div>
+  </div>
+{% endblock %}
