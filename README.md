@@ -1,4 +1,4 @@
-## design.byFrom.co v1.0.0
+## design.byForm v1.0.0
 
 design.byform is the portfolio of Dan Flynn, a freelance designer, developer and creative director, working out of Melbourne, Australia. Built with Craft CMS 3.
 
